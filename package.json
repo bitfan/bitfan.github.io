@@ -18,19 +18,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kitian616/kitian616.github.io.git"
+    "url": "git+https://github.com/bitfan/bitfan.github.io.git"
   },
   "keywords": [
     "jekyll",
     "jekyll-theme",
     "jekyll-template"
   ],
-  "author": "Tian Qi",
+  "author": "Qiang Wang",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kitian616/issues"
+    "url": "https://github.com/bitfan/issues"
   },
-  "homepage": "https://github.com/kitian616#readme",
+  "homepage": "https://github.com/bitfan#readme",
   "devDependencies": {
     "eslint": "^4.19.1",
     "gulp": "^3.9.1",

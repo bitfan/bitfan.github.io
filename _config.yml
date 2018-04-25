@@ -13,11 +13,11 @@
 
 text_color_theme: default #eg: default | dark | forest | ocean | chocolate | orange
 ## Base settings ##
-# url:  #the base hostname & protocol for your site e.g. https://www.someone.com
+url:  https://bitfan.github.io
 baseurl: /
-title: Someone's blog
+title: Qiang's blog
 description: > #this means to ignore newlines until "nav_lists:"
-  Someone's Blog
+  Qiang's Blog
 
 nav_lists:
   - titles:
@@ -39,19 +39,19 @@ nav_lists:
 
 ## Language & timezone ##
 lang: en #the language of your site, eg: en(English), zh(简体中文), zh-Hans(简体中文), zh-Hant(繁體中文)
-timezone: Asia/Shanghai #see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for the available values
+timezone: America/New_York #see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for the available values
 
 ## Author & social ##
 author:
-  name: Someone
-  # email:  #your Email address e.g. someone@site.com
-  # facebook:  #your Facebook username
+  name: Qiang Wang
+  # email:  chancewang@hotmail.com
+  facebook:  qiang.wang.9843
   # twitter:  #your Twitter username
-  # github:  #your GitHub username
+  github:  bitfan
   # googleplus:  #your Google+ username
-  # weibo:  #your Weibo username
+  weibo:  chancewang
   # douban:  #your Douban username
-  # linkedin:  #your Linkedin username
+  linkedin:  qiang-wang-bb170422
 
 ## TOC
 toc:
@@ -59,7 +59,7 @@ toc:
 
 ## Comment system (Disqus) ##
 disqus:
-  # shortname:  #the Disqus shortname for the site
+  shortname: bitfan
 
 ## Comment system (gitalk) ##
 # please refer to https://github.com/gitalk/gitalk for more info.
@@ -86,7 +86,7 @@ leancloud:
 # chart: true
 
 ## Paginate ##
-paginate: 7
+paginate: 8
 paginate_path: /page:num
 
 ## Post excerpts ##

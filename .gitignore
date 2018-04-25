@@ -3,7 +3,10 @@
 .AppleDouble
 .LSOverride
 
-
+.idea
+.Archive
+.md_configs.data
+.me_configs.data
 
 # Thumbnails
 ._*
