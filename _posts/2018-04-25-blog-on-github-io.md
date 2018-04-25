@@ -1,12 +1,13 @@
 ---
 layout: post
 comment: true
-titles:
-  en: Setup your blog on github
-  zh: 在github.io上建立博客
-  zh-Hans: 在github.io上建立博客
-  zh-Hant: 關於
-key: blog-on-github-io
+title: 在github.io上建立博客
+key: 2018042501
+tags:
+  - github pages
+  - Jekyll
+  - markdown
+lang: zh
 ---
 需要有一个地方存放自己的技术笔记、资料汇集、心得体会等等，研究了一下，也许使用[github Pages](https://pages.github.com/)是最为简便的方法。
 # 建立github页面
@@ -51,5 +52,18 @@ bundle exec jekyll serve
 浏览器打开<http://127.0.0.1:4000>就可以查看新写的博客了。
 
 # 提交到github
+需要编辑一下`.gitignore`文件，去掉那些工具生成的项目文件
+```
+.idea
+.Archive
+.md_configs.data
+.me_configs.data
+```
+下面就可以提交了：
+```
+git add --all
+git commit -m "First Blog"
+git push -u origin master
+```
 
 Enjoy!
