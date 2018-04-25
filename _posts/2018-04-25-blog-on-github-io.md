@@ -1,7 +1,12 @@
 ---
 layout: post
-comments: true
-title: 在github.io上建立博客
+comment: true
+titles:
+  en: Setup your blog on github
+  zh: 在github.io上建立博客
+  zh-Hans: 在github.io上建立博客
+  zh-Hant: 關於
+key: blog-on-github-io
 ---
 需要有一个地方存放自己的技术笔记、资料汇集、心得体会等等，研究了一下，也许使用[github Pages](https://pages.github.com/)是最为简便的方法。
 # 建立github页面
