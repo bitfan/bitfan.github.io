@@ -4,7 +4,7 @@ comment: true
 title: 在github.io上建立博客
 key: 2018042501
 tags:
-  - github pages
+  - 'github pages'
   - Jekyll
   - markdown
 lang: zh
@@ -43,6 +43,19 @@ disqus:
 ```
 把bitfan改成你设置的short name
 （评论系统在本地看不到，需要提交之后才能看到。）
+## 添加浏览量统计
+注册LeanCloud账号，并创建一个新的应用，可命名成博客名。在该应用的`设置`->`应用Key`下可看到`App ID`和`App Key`；在`存储`->`数据`下`创建Class`。有了这些信息，可到`_config.yml`中填写相关信息：
+```
+## Reading quantity (LeanCloud) ##
+leancloud:
+  # app_id:  #LeanCloud App id
+  # app_key:  #LeanCloud App key
+  # app_class:  #LeanCloud App class
+```
+更新到github之后，可以在具体的post页面看到浏览量统计。要记得在每篇文章的md文件meta中设置唯一的key，比如本篇文章：
+```
+key: 2018042501
+```
 
 ## 本地实时查看编辑的页面
 到项目目录，启动本地服务器
