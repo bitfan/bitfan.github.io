@@ -44,7 +44,7 @@ disqus:
 把bitfan改成你设置的short name
 （评论系统在本地看不到，需要提交之后才能看到。）
 ## 添加浏览量统计
-注册LeanCloud账号，并创建一个新的应用，可命名成博客名。在该应用的`设置`->`应用Key`下可看到`App ID`和`App Key`；在`存储`->`数据`下`创建Class`。有了这些信息，可到`_config.yml`中填写相关信息：
+注册[LeanCloud](https://leancloud.cn)账号，并创建一个新的应用，可命名成博客名。在该应用的`设置`->`应用Key`下可看到`App ID`和`App Key`；在`存储`->`数据`下`创建Class`。有了这些信息，可到`_config.yml`中填写相关信息：
 ```
 ## Reading quantity (LeanCloud) ##
 leancloud:
