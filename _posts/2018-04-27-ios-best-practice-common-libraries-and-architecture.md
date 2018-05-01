@@ -10,40 +10,32 @@ lang: zh
 ---
 ## 常用库
 有时一个优雅的库解决了你的问题，但是可能不久之后却卡在一个维护问题上，仅仅因为iOS版本更新打破了这个库的实现。也可能，有个功能之前只有一个特定的第三方库来实现，忽然变成了官方接口的一部分。应该总是优先考虑Apple提供的扩展framework（通常也是最好的）！
-因此关于这部分内容，将尽量谨慎地保持简短。
-Therefore this section has been deliberately kept rather short. The libraries featured here tend to reduce boilerplate code (e.g. Auto Layout) or solve complex problems that require extensive testing, such as date calculations. As you become more proficient with iOS, be sure to dive into the source here and there, and acquaint yourself with their underlying Apple frameworks. You'll find that those alone can do a lot of the heavy lifting.
+因此关于这部分内容，将尽量谨慎地保持简短。随着对iOS编程了解的深入，不妨深入那些第三方库的源码，你会对底层Apple frameworks有更多的了解。你会发现Apple自己提供的框架可以做到更多。
 
 ### AFNetworking/Alamofire
 
-The majority of iOS developers use one of these network libraries. While `NSURLSession` is surprisingly powerful by itself, [AFNetworking][afnetworking-github] and [Alamofire][alamofire-github] remain unbeaten when it comes to actually managing queues of requests, which is pretty much a requirement of any modern app. We recommend AFNetworking for Objective-C projects and Alamofire for Swift projects. While the two frameworks have subtle differences, they share the same ideology and are published by the same foundation.
+大部分iOS开发者使用这两个网络库之一。虽然 `NSURLSession` 功能已经相当强大，[AFNetworking][afnetworking-github] 和 [Alamofire][alamofire-github] 在管理请求队列方面仍然不可战胜，尤其考虑到管理请求队列几乎是绝大部分App需要的功能。建议Objective-C项目使用AFNetworking，Swift项目则使用Alamofire。虽然这两个库有细微差别，但是他们具有共同的设计，而且是由同一个基金会发布的。
 
 [afnetworking-github]: https://github.com/AFNetworking/AFNetworking
 [alamofire-github]: https://github.com/Alamofire/Alamofire
 
 ### DateTools
-As a general rule, [don't write your date calculations yourself][timezones-youtube]. Luckily, in [DateTools][datetools-github] you get an MIT-licensed, thoroughly tested library that covers pretty much all your calendar needs.
+通常来说，[绝不要自己写日期计算程序][timezones-youtube]。好在[DateTools][datetools-github]使用MIT-licensed，测试比较完全，几乎可以满足日历相关的所有需求。
 
 [timezones-youtube]: https://www.youtube.com/watch?v=-5wpm-gesOY
 [datetools-github]: https://github.com/MatthewYork/DateTools
 
 ### Auto Layout Libraries
-If you prefer to write your views in code, chances are you've heard of either Apple's awkward syntaxes – the regular `NSLayoutConstraint` factory or the so-called [Visual Format Language][visual-format-language]. The former is extremely verbose and the latter based on strings, which effectively prevents compile-time checking. Fortunately, they've addressed the issue in iOS 9, allowing [a more concise specification of constraints][nslayoutanchor].
-
-If you're stuck with an earlier iOS version, [Masonry/SnapKit][snapkit-github] remedies the problem by introducing its own [DSL][dsl-wikipedia] to make, update and replace constraints. [PureLayout][purelayout-github] solves the same problem using Cocoa API style. For Swift, there is also [Cartography][cartography-github], which builds on the language's powerful operator overloading features. For the more conservative, [FLKAutoLayout][flkautolayout-github] offers a clean, but rather non-magical wrapper around the native APIs.
+如果你通常用代码实现views，你应该会熟悉Apple奇怪的语法 – 规范的 `NSLayoutConstraint` 工厂，或者所谓的[Visual Format Language][visual-format-language]。前者极度冗长，而后者则是基于字符串的，可以有效减少编译时检查。好在在iOS9中，Apple已经着手解决这个问题，允许 [一种更简明的约束规则][nslayoutanchor].
 
 [visual-format-language]: https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/AutolayoutPG/VisualFormatLanguage.html
 [nslayoutanchor]: https://developer.apple.com/library/prerelease/ios/documentation/AppKit/Reference/NSLayoutAnchor_ClassReference/index.html
-[snapkit-github]: https://github.com/SnapKit/
-[purelayout-github]: https://github.com/PureLayout/PureLayout
-[dsl-wikipedia]: https://en.wikipedia.org/wiki/Domain-specific_language
-[cartography-github]: https://github.com/robb/Cartography
-[flkautolayout-github]: https://github.com/floriankugler/FLKAutoLayout
 
 ## Architecture
 
 * [Model-View-Controller-Store (MVCS)][mvcs]
-    * This is the default Apple architecture (MVC), extended by a Store layer that vends Model instances and handles the networking, caching etc.
-    * Every Store exposes to the view controllers either `signals` or `void` methods with custom completion blocks.
+    * 这是缺省Apple模型(MVC)加上一个Store层，用来发表Model实例，以及处理networking, caching等。
+    * 每个Store向view controllers暴露带有定制的completion blocks的`signals`或`void`方法
 * [Model-View-ViewModel (MVVM)][mvvm]
     * Motivated by "massive view controllers": MVVM considers `UIViewController` subclasses part of the View and keeps them slim by maintaining all state in the ViewModel.
     * To learn more about it, check out Bob Spryn's [fantastic introduction][sprynthesis-mvvm].
