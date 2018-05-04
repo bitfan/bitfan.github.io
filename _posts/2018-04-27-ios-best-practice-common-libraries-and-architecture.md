@@ -32,7 +32,7 @@ lang: zh
 [nslayoutanchor]: https://developer.apple.com/library/prerelease/ios/documentation/AppKit/Reference/NSLayoutAnchor_ClassReference/index.html
 
 ## Architecture
-
+Github上[fantastic-ios-architecture][fantastic-ios-architecture]给出了一个很全的iOS架构列表。这里讲几个常用的：
 * [Model-View-Controller-Store (MVCS)][mvcs]
     * 这是缺省Apple模型(MVC)加上一个Store层，用来发表Model实例，以及处理networking, caching等。
     * 每个Store向view controllers暴露带有定制的completion blocks的`signals`或`void`方法
@@ -46,10 +46,11 @@ lang: zh
 [mvvm]: https://www.objc.io/issues/13-architecture/mvvm/
 [sprynthesis-mvvm]: http://www.sprynthesis.com/2014/12/06/reactivecocoa-mvvm-introduction/
 [viper]: https://www.objc.io/issues/13-architecture/viper/
+[fantastic-ios-architecture]: https://github.com/onmyway133/fantastic-ios-architecture
 
 ### “Event” Patterns
 
-These are the idiomatic ways for components to notify others about things:
+下面列出一些惯用的组件间通讯的方式:
 
 * __Delegation:__ _(one-to-one)_ Apple uses this a lot (some would say, too much). Use when you want to communicate stuff back e.g. from a modal view.
 * __Callback blocks:__ _(one-to-one)_ Allow for a more loose coupling, while keeping related code sections close to each other. Also scales better than delegation when there are many senders.
@@ -61,7 +62,7 @@ These are the idiomatic ways for components to notify others about things:
 
 ### Models
 
-Keep your models immutable, and use them to translate the remote API's semantics and types to your app. For Objective-C projects, Github's [Mantle](https://github.com/Mantle/Mantle) is a good choice. In Swift, you can use structs instead of classes to ensure immutability, and use a parsing library such as [SwiftyJSON][swiftyjson] or [Argo][argo] to do the JSON-to-model mapping.
+保持模型不可变(immutable)，用他们来翻译远程API的语言和类型到你的APP。Objective-C项目中推荐使用Github's [Mantle](https://github.com/Mantle/Mantle)。Swift项目可以用structs取代classes来确保模型不变性，使用解析库比如[SwiftyJSON][swiftyjson] 或 [Argo][argo]来做JSON到模型的映射。
 
 [swiftyjson]: https://github.com/SwiftyJSON/SwiftyJSON
 [argo]: https://github.com/thoughtbot/Argo
@@ -70,7 +71,7 @@ Keep your models immutable, and use them to translate the remote API's semantics
 
 With today's wealth of screen sizes in the Apple ecosystem and the advent of split-screen multitasking on iPad, the boundaries between devices and form factors become increasingly blurred. Much like today's websites are expected to adapt to different browser window sizes, your app should handle changes in available screen real estate in a graceful way. This can happen e.g. if the user rotates the device or swipes in a secondary iPad app next to your own.
 
-Instead of manipulating view frames directly, you should use [size classes][size-classes] and Auto Layout to declare constraints on your views. The system will then calculate the appropriate frames based on these rules, and re-evaluate them when the environment changes.
+不要直接控制界面尺寸，应该使用[size classes][size-classes] 和 Auto Layout 来声明views的constraints。系统会根据这些规则自动计算合适的frames，并且在环境改变时重新计算。
 
 Apple's [recommended approach][wwdc-autolayout-mysteries] for setting up your layout constraints is to create and activate them once during initialization. If you need to change your constraints dynamically, hold references to them and then deactivate/activate them as required. The main use case for `UIView`'s `updateConstraints` (or its `UIViewController` counterpart, `updateViewConstraints`) is when you want the system to perform batch updates for better performance. However, this comes at the cost of having to call `setNeedsUpdateConstraints` elsewhere in your code, increasing its complexity.
 
@@ -97,7 +98,7 @@ Otherwise, you may encounter strange bugs when the system doesn't call `updateCo
 
 ### Controllers
 
-Use dependency injection, i.e. pass any required objects in as parameters, instead of keeping all state around in singletons. The latter is okay only if the state _really_ is global.
+使用依赖注入，即将任何需要的对象作为参数传入，而不是将所有状态保存在singletons中。不是说不可以，只有那些状态 _真正_ 是全局的时候才保存到singletons中。
 
 Swift:
 ```swift
@@ -109,6 +110,6 @@ Objective-C:
 FooViewController *fooViewController = [[FooViewController alloc] initWithViewModel:fooViewModel];
 ```
 
-Try to avoid bloating your view controllers with logic that can safely reside in other places. Soroush Khanlou has a [good writeup][khanlou-destroy-massive-vc] of how to achieve this, and architectures like [MVVM](#architecture) treat view controllers as views, thereby greatly reducing their complexity.
+尽量避免view controllers过于臃肿，而去包含一些可以安全的在其它地方实现的逻辑。 Soroush Khanlou 在[good writeup][khanlou-destroy-massive-vc] 里提到怎么做到这一点，并且像 [MVVM](#architecture) 这些架构将view controllers视为views，因而极大降低了复杂度。
 
 [khanlou-destroy-massive-vc]: http://khanlou.com/2014/09/8-patterns-to-help-you-destroy-massive-view-controller/
