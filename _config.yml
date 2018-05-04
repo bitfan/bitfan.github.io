@@ -76,9 +76,9 @@ gitalk:
 
 ## Reading quantity (LeanCloud) ##
 leancloud:
-  app_id:  XqyG5rXtMh9MEO4HGEQxBI0U-9Nh9j0Va
-  app_key:  9BmYgXN7XNginqUQkrgtbN5R
-  app_class:  bitfan_github
+  app_id:  vzg44KUau5nD03PAsI6O4169-gzGzoHsz
+  app_key:  1MNtlpi0zYUs8lra5zWKt3s4
+  app_class:  bitfan_blog
 
 # mathjax: true
 # mathjax_autoNumber: true
